@@ -12,11 +12,13 @@ use App\Models\Company;
 use App\Models\Inventory;
 use App\Models\PackageVariant;
 use App\Models\Product;
+use App\Models\Shipment;
 use App\Observers\ClosetObserver;
 use App\Observers\CompanyObserver;
 use App\Observers\InventoryObserver;
 use App\Observers\PackageVariantObserver;
 use App\Observers\ProductObserver;
+use App\Observers\ShipmentObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -55,7 +57,8 @@ class EventServiceProvider extends ServiceProvider
         Closet::class => [ClosetObserver::class],
         Product::class => [ProductObserver::class],
         Inventory::class => [InventoryObserver::class],
-        PackageVariant::class => [PackageVariantObserver::class]
+        PackageVariant::class => [PackageVariantObserver::class],
+        Shipment::class => [ShipmentObserver::class]
     ];
 
     /**

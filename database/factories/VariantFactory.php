@@ -5,12 +5,12 @@ namespace Database\Factories;
 use App\Http\Controllers\Inventory\InventoryModelController;
 use App\Http\Controllers\Variation\VariationModelController;
 use App\Http\Controllers\Color\ColorModelController;
-use App\Models\Company;
-use Exception;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Http\Controllers\Size\SizeModelController;
+use App\Models\Company;
 use App\Models\Product;
 use App\Models\Variant;
+use Exception;
 use Throwable;
 
 /**
@@ -58,12 +58,12 @@ class VariantFactory extends Factory
      * @return void
      * @throws Throwable
      */
-    function createSizeVariation(Variant $variant): void
+    private function createSizeVariation(Variant $variant): void
     {
         $size = SizeModelController::randomFirst();
         throw_if(is_null($size));
 
-        VariationModelController::createFor($variant, $size);
+        VariationModelController::createVariationsFor($variant, $size);
     }
 
     /**
@@ -71,12 +71,12 @@ class VariantFactory extends Factory
      * @return void
      * @throws Throwable
      */
-    function createColorVariation(Variant $variant): void
+    private function createColorVariation(Variant $variant): void
     {
         $color = ColorModelController::randomFirst();
         throw_if(is_null($color));
 
-        VariationModelController::createFor($variant, $color);
+        VariationModelController::createVariationsFor($variant, $color);
     }
 
     private function createInventory(Variant $variant): void

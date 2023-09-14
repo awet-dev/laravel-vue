@@ -251,7 +251,7 @@ const shipment_variants = computed(function () {
                         </div>
 
                         <div>
-                            <InputLabel for="recipient_email" value="Recipient Name"/>
+                            <InputLabel for="recipient_email" value="Recipient Email"/>
                             <TextInput
                                 id="recipient_email"
                                 type="text"
@@ -374,8 +374,7 @@ const shipment_variants = computed(function () {
                             <Th>Actions</Th>
                         </template>
                         <template #rows>
-                            <Tr v-if="shipment_variants !== null" v-for="variant in shipment_variants"
-                                @click="handleRowClick(variant.id, route('variants.details', {variant: '__ROW_ID__'}))">
+                            <Tr v-if="shipment_variants !== null" v-for="variant in shipment_variants">
                                 <Td>{{ variant.name }}</Td>
                                 <Td>{{ variant.price }} €</Td>
                                 <Td>{{ variant.quantity }}</Td>

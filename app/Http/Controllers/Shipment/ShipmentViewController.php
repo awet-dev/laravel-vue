@@ -26,6 +26,7 @@ class ShipmentViewController extends Controller
     {
         /** @var User $user */
         $user = Auth::user();
+        $closet = $user->currentCloset();
 
         $shipments = Shipment::query()
             ->when($request->get('search'), static function (Builder $query, string $search) {
@@ -33,7 +34,7 @@ class ShipmentViewController extends Controller
                     ->orWhere('recipient_email', 'like', "%$search%")
                     ->orWhere('recipient_email', 'like', "%$search%")
                     ->orWhere('state', 'like', "%$search%");
-            })
+            })->where('closet_id', '=', $closet->id)
             ->paginate($request->get('per_page', 10))
             ->through(fn(Shipment $shipment) => [ // todo user resource
                 'id' => $shipment->id,

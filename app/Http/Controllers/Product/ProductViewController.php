@@ -146,8 +146,7 @@ class ProductViewController extends Controller
 
         InventoryModelController::createForVariant($variant, $closet);
 
-        VariationModelController::createFor($variant, $size);
-        VariationModelController::createFor($variant, $color);
+        VariationModelController::createVariationsFor($variant, $color, $size);
 
         return Redirect::route('products.details', ['product' => $product->id])
             ->with('message', 'variant-created');

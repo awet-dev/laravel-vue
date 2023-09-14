@@ -42,13 +42,19 @@ class VariationModelController extends Controller
         return $variable->getName();
     }
 
-    public static function createFor($variant, Attribute $attribute): ?Variation
+    public static function createVariationsFor($variant, Attribute ...$attributes): array
     {
-        return Variation::create([
-            'name' => $attribute->getType(),
-            'variable_id' => $attribute->id,
-            'variable_type' => get_class($attribute),
-            'variant_id' => $variant->id
-        ]);
+        $variations = [];
+
+        foreach ($attributes as $attribute) {
+            $variations[] = Variation::create([
+                'name' => $attribute->getType(),
+                'variable_id' => $attribute->id,
+                'variable_type' => get_class($attribute),
+                'variant_id' => $variant->id
+            ]);
+        }
+
+        return $variations;
     }
 }

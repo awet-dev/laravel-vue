@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @property int $in_transit
  * @property int $in_stock
+ * @property int $in_reserve
  * @property Variant $variant
  * @property Closet $closet
  * @property int $variant_id

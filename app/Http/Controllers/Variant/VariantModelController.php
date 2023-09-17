@@ -53,14 +53,17 @@ class VariantModelController extends Controller
         return $inventory;
     }
 
-    public static function getVariantsInCloset(Closet $closet, array $columns = ['*']): Collection
+    public static function getVariantsInCloset(Closet $closet): Collection
     {
         return Variant::whereHas('inventories', function ($query) use ($closet) {
             $query->where('closet_id', $closet->id);
-        })->get($columns);
+        })->join('inventories', 'variants.id', '=', 'inventories.variant_id')
+            ->where('inventories.closet_id', $closet->id)
+            ->select('variants.*', 'inventories.in_stock')
+            ->get();
     }
 
-    public static function getVariantsInClosetNotInShipment(Shipment $shipment, array $column = ['*']): Collection
+    public static function getVariantsInClosetNotInShipment(Shipment $shipment): Collection
     {
         $closet = $shipment->closet;
 
@@ -68,6 +71,9 @@ class VariantModelController extends Controller
             $query->where('closet_id', $closet->id);
         })->whereDoesntHave('shipments', function ($query) use ($shipment) {
             $query->where('shipment_id', $shipment->id);
-        })->get($column);
+        })->join('inventories', 'variants.id', '=', 'inventories.variant_id')
+            ->where('inventories.closet_id', $closet->id)
+            ->select('variants.*', 'inventories.in_stock')
+            ->get();
     }
 }

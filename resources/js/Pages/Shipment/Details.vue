@@ -159,9 +159,16 @@ const clickSubmitBtn = () => {
 const handleAddVariant = (event) => {
     const target = event.target;
     const variant_id = target.dataset.variantId
+    const variant_in_stock = target.dataset.variantIn_stock
     const quantity_el = document.getElementById('quantity_' + variant_id)
+    const quantity = quantity_el.value;
 
-    axios.post(route('api.shipments.add-variant', {shipment: props.shipment.id, variant: variant_id, quantity: quantity_el.value}))
+    if (Number(quantity) > Number(variant_in_stock)) {
+        quantity_el.classList.add('border', 'border-red-600')
+        return;
+    }
+
+    axios.post(route('api.shipments.add-variant', {shipment: props.shipment.id, variant: variant_id, quantity: quantity}))
         .then(res => {
             const variant = res.data.variant;
 
@@ -424,11 +431,12 @@ const shipment_variants = computed(function () {
                                     class="mt-1 block w-full py-0.5 pl-1"
                                     model-value="1"
                                     min="1"
+                                    :max="variant.in_stock"
                                     required
                                 />
                             </Td>
                             <Td>
-                                <PrimaryButton title="Add Variant" class="fa-solid fa-plus"
+                                <PrimaryButton title="Add Variant" class="fa-solid fa-plus" :data-variant-in_stock="variant.in_stock"
                                                :data-variant-id="variant.id"
                                                @click="handleAddVariant"/>
                             </Td>

@@ -77,7 +77,7 @@ class ShipmentFactory extends Factory
     private function addVariants(Shipment $shipment): void
     {
         $closet = $shipment->closet;
-        $variants = VariantModelController::getVariantsInCloset($closet, ['id']);
+        $variants = VariantModelController::getVariantsInCloset($closet);
 
         $variants->map(function (Variant $variant) use ($shipment, $closet) {
             $inventory = VariantModelController::getInventoryInCloset($variant, $closet);

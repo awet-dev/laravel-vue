@@ -156,22 +156,6 @@ onMounted(function () {
                 </li>
 
                 <li class="relative">
-                    <SidenavLink route_path="/campaigns" name="Campaigns">
-                        <template #icon>
-                            <i class="fa-solid fa-people-group"></i>
-                        </template>
-                    </SidenavLink>
-                </li>
-
-                <li class="relative">
-                    <SidenavLink route_path="/web-shops" name="web-shops">
-                        <template #icon>
-                            <i class="fa-solid fa-shop"></i>
-                        </template>
-                    </SidenavLink>
-                </li>
-
-                <li class="relative">
                     <SidenavLink route_path="/closets" name="closets">
                         <template #icon>
                             <i class="fa-solid fa-notdef"></i>
@@ -203,14 +187,6 @@ onMounted(function () {
                         Internal
                     </span>
 
-                    <SidenavLink route_path="/shop-apps" name="shop-apps">
-                        <template #icon>
-                            <i class="fa-brands fa-app-store-ios"></i>
-                        </template>
-                    </SidenavLink>
-                </li>
-
-                <li class="relative">
                     <SidenavLink route_path="/agencies" name="agencies">
                         <template #icon>
                             <i class="fa-brands fa-app-store-ios"></i>
@@ -227,46 +203,9 @@ onMounted(function () {
                 </li>
 
                 <li class="relative">
-                    <SidenavLink route_path="/messages" name="messages">
-                        <template #icon>
-                            <i class="fa-solid fa-envelope"></i>
-                        </template>
-                    </SidenavLink>
-                </li>
-
-                <li class="relative">
-                    <SidenavLink route_path="/product-types" name="product-types">
-                        <template #icon>
-                            <i class="fa-solid fa-socks"></i>
-                        </template>
-                    </SidenavLink>
-                </li>
-
-                <li class="relative">
                     <SidenavLink route_path="/stock-moves" name="stock-moves">
                         <template #icon>
                             <i class="fa-solid fa-cubes"></i>
-                        </template>
-                    </SidenavLink>
-                </li>
-
-                <li class="relative">
-                    <SidenavDropdown name="invoicing">
-                        <template #items>
-                            <li class="relative">
-                                <SidenavDropdownItem href="/charges" name="charges"/>
-                            </li>
-                            <li class="relative">
-                                <SidenavDropdownItem href="/invoices" name="invoices"/>
-                            </li>
-                        </template>
-                    </SidenavDropdown>
-                </li>
-
-                <li class="relative">
-                    <SidenavLink route_path="/variation-types" name="variation-types">
-                        <template #icon>
-                            <i class="fas fa-bolt"></i>
                         </template>
                     </SidenavLink>
                 </li>

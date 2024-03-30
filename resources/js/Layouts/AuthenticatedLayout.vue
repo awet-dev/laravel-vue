@@ -25,7 +25,7 @@ const showingNavigationDropdown = ref(false);
                     <div class="flex justify-between h-16">
                         <div class="flex items-center">
                             <!-- Sidenav Toggler -->
-                            <sidenav-toggler/>
+                            <SidenavToggler/>
 
                             <!-- Breadcrumb Links -->
                             <Breadcrumb/>
